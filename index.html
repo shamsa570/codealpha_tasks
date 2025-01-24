@@ -2,213 +2,54 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="newportfolio.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/newportfolio.css" />
-    <title>Portfolio</title>
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
-
   <body>
-    <div class="header">
-      <div class="container">
-        <nav>
-          <img src="images/logo.png" alt="logo" class="logo" />
-          <i class="fas fa-bars" onclick="openMenu()"></i>
-          <ul id="sideMenu">
-            <li><a href="#header">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Servies</a></li>
-            <li><a href="#contact">contact</a></li>
-            <i class="fas fa-times" onclick="closeMenu()"></i>
-          </ul>
-        </nav>
-        <div class="header-text">
-          <p>UI/UX Developer</p>
-          <h1>Hi, I'm <span>Shamsa Kanwal</span></h1>
-        </div>
+    <div class="calculator">
+      <div class="display">
+        <input type="text" id="result" placeholder="0" disabled />
       </div>
-    </div>
-    <!--- about -->
 
-    <div id="about">
-      <div class="container">
-        <div class="row">
-          <div class="about-col-2">
-            <h1 class="sub-title">About Me</h1>
-            <p>
-              Hello! I’m Shamsa, a passionate and dedicated Front-End Developer
-              with a degree in Computer Science. I specialize in crafting
-              user-friendly and visually appealing web interfaces using
-              technologies like HTML, CSS, JavaScript, React, Redux, and
-              Bootstrap. I am deeply interested in creating seamless UI/UX
-              designs that enhance user experiences. I’m constantly learning and
-              striving to improve my skills, aiming to contribute to meaningful
-              projects while growing my expertise.
-            </p>
-            <div class="tab-title">
-              <p class="tab-links active-link" onclick="opentab('skills')">
-                Skills
-              </p>
-              <p class="tab-links" onclick="opentab('experience')">
-                Experience
-              </p>
-              <p class="tab-links" onclick="opentab('education')">Education</p>
-            </div>
-            <div class="tab-contents active-tab" id="skills">
-              <ul>
-                <li>
-                  <span>UI/UX Developer</span><br />
-                  Designing intuitive and user-friendly web and app interfaces.
-                </li>
-                <li>
-                  <span>Web Development</span><br />
-                  Developing responsive and interactive websites/web
-                  applications using HTML, CSS, JavaScript, React, Redux, and
-                  Bootstrap.
-                </li>
+      <div class="buttons">
+        <!-- Clear and Delete -->
+        <button class="btn clear" onclick="clearScreen()">C</button>
+        <button class="btn" onclick="deleteChar()">⌫</button>
 
-                <li>
-                  <span>Front-End Expertise</span><br />
-                  Crafting visually appealing layouts, reusable components, and
-                  dynamic user experiences.
-                </li>
-                <li>
-                  <span>Responsive Design</span><br />
-                  Ensuring websites and applications work seamlessly on all
-                  devices and screen sizes.
-                </li>
-              </ul>
-            </div>
-            <div class="tab-contents" id="experience">
-              <ul>
-                <li>
-                  <span>E-commerce Clone</span><br />
-                  Built a responsive e-commerce application with React and
-                  Redux, featuring product listings and a shopping cart.
-                </li>
-                <li>
-                  <span>News Application</span><br />
-                  Developed a dynamic news app in Android Studio with category
-                  filtering and modern Material Design.
-                </li>
-                <li>
-                  <span>Personal Portfolio</span><br />
-                  Designed and developed an interactive portfolio using HTML,
-                  CSS, and JavaScript to showcase skills and projects with a
-                  seamless UI/UX.
-                </li>
-              </ul>
-            </div>
-            <div class="tab-contents" id="education">
-              <ul>
-                <li>
-                  <span>Bachelor's Degree in Computer Science</span
-                  ><br />Graduated from MUST University (2020–2024).
-                </li>
-                <li>
-                  <span>ICS</span><br />FSC from Ghazi Ellahi Bakhsh Government
-                  Degree College(2018-2020)
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="about-col-1">
-            <img src="images/c1.jpg" alt="logo" class="logo" />
-          </div>
-        </div>
+        <!-- Parentheses -->
+        <button class="btn" onclick="appendChar('(')">(</button>
+        <button class="btn" onclick="appendChar(')')">)</button>
+
+   
+        <button class="btn" onclick="appendChar('7')">7</button>
+        <button class="btn" onclick="appendChar('8')">8</button>
+        <button class="btn" onclick="appendChar('9')">9</button>
+        <button class="btn operator" onclick="appendChar('+')">+</button>
+
+        <button class="btn" onclick="appendChar('4')">4</button>
+        <button class="btn" onclick="appendChar('5')">5</button>
+        <button class="btn" onclick="appendChar('6')">6</button>
+        <button class="btn operator" onclick="appendChar('-')">-</button>
+
+        <button class="btn" onclick="appendChar('1')">1</button>
+        <button class="btn" onclick="appendChar('2')">2</button>
+        <button class="btn" onclick="appendChar('3')">3</button>
+        <button class="btn operator" onclick="appendChar('*')">*</button>
+
+        <button class="btn" onclick="appendChar('0')">0</button>
+        <button class="btn" onclick="appendChar('.')">.</button>
+        <button class="btn equal" onclick="calculate()">=</button>
+        <button class="btn operator" onclick="appendChar('/')">/</button>
+
+  
+        <button class="btn function" onclick="sinFunction()">sin</button>
+        <button class="btn function" onclick="cosFunction()">cos</button>
+        <button class="btn function" onclick="tanFunction()">tan</button>
+        <button class="btn function" onclick="cotFunction()">cot</button>
       </div>
     </div>
 
-    <!---service  --->
-
-    <div id="services">
-      <div class="container">
-        <h1 class="sub-title">My Services</h1>
-        <div class="services-list">
-          <div>
-            <h2>Responsive Websites</h2>
-            <p>
-              Designing responsive websites that look great on all devices using
-              HTML,CSS, Tailwind, and Bootstrap. Ensuring a seamless user
-              experience with fast load times and modern design principles.
-            </p>
-            <a href="#">Learn more</a>
-          </div>
-          <div>
-            <h2>Web Development</h2>
-            <p>
-              Building dynamic, interactive single-page applications (SPAs)
-              using React for smooth user experiences and fast performance.
-              Implementing advanced state management with React and Redux, and
-              utilizing reusable components for efficient code.
-            </p>
-            <a href="#">Learn more</a>
-          </div>
-          <div>
-            <h2>
-              UI/UX <br />
-              Design
-            </h2>
-            <p>
-              Creating modern, intuitive user interfaces (UI) using Tailwind and
-              Bootstrap for quick and clean layouts. Focusing on UX design to
-              ensure your website or application is user-friendly and easy to
-              navigate.
-            </p>
-            <a href="#">Learn more</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--contact-->
-    <div id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="contact-left">
-            <h1 class="sub-title">contact me</h1>
-            <p><i class="fa-solid fa-envelope"></i>shamsaknwal896@gmail.com</p>
-            <p><i class="fa-solid fa-phone"></i>+923190871277</p>
-            <div class="social-icon">
-              <a href=""><i class="fa-brands fa-facebook"></i></a>
-              <a href=""><i class="fa-brands fa-instagram"></i></a>
-              <a href=""><i class="fa-brands fa-linkedin"></i></a>
-            </div>
-            <a href="images/skcv.pdf" download="My_CV.pdf" class="btn btn2"
-              >Download CV</a
-            >
-          </div>
-          <div class="contact-right">
-            <form name="submit-to-google-sheet" class="contact-right">
-              <input type="text" name="Name" placeholder="your name" required />
-              <input
-                type="email"
-                name="Email"
-                placeholder="your email"
-                required
-              />
-              <textarea
-                name="Message"
-                placeholder="your message"
-                rows="6"
-              ></textarea>
-              <button type="submit" class="btn btn2">submit</button>
-            </form>
-            <span id="msg"></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="copy-right">
-        <p>
-          Copyright © 2024 Shamsa's Portfolio <i class="fa-solid fa-heart"></i>
-        </p>
-      </div>
-    </div>
     <script src="js/script.js"></script>
   </body>
 </html>
