@@ -1,41 +1,57 @@
-// Tabs Functionality
-var tablinks = document.getElementsByClassName("tab-links");
-var tabcontents = document.getElementsByClassName("tab-contents");
-function opentab(tabname) {
-  for (let tablink of tablinks) {
-    tablink.classList.remove("active-link");
+
+function clearScreen() {
+  document.getElementById('result').value = '';
+}
+
+
+function deleteChar() {
+  const result = document.getElementById('result');
+  result.value = result.value.slice(0, -1);
+}
+
+
+function appendChar(char) {
+  document.getElementById('result').value += char;
+}
+
+
+function calculate() {
+  const result = document.getElementById('result');
+  
+  
+  let expression = result.value;
+
+  expression = expression.replace(/sin\(([^)]+)\)/g, (match, p1) => `Math.sin(${p1 * Math.PI / 180})`);
+  expression = expression.replace(/cos\(([^)]+)\)/g, (match, p1) => `Math.cos(${p1 * Math.PI / 180})`);
+  expression = expression.replace(/tan\(([^)]+)\)/g, (match, p1) => `Math.tan(${p1 * Math.PI / 180})`);
+  expression = expression.replace(/cot\(([^)]+)\)/g, (match, p1) => `1 / Math.tan(${p1 * Math.PI / 180})`);
+
+  try {
+
+    let calcResult = eval(expression); 
+
+  
+    calcResult = Math.round(calcResult * 1e6) / 1e6;  
+
+    result.value = calcResult;
+  } catch (error) {
+    result.value = 'Error';
   }
-  for (let tabcontent of tabcontents) {
-    tabcontent.classList.remove("active-tab");
-  }
-  event.currentTarget.classList.add("active-link");
-  document.getElementById(tabname).classList.add("active-tab");
 }
 
-// Side Menu Functionality
-var sideMenu = document.getElementById("sideMenu");
-function openMenu() {
-  sideMenu.style.left = "0";
+
+function sinFunction() {
+  appendChar('sin(');  
 }
 
-function closeMenu() {
-  sideMenu.style.left = "-200px";
+function cosFunction() {
+  appendChar('cos('); 
 }
 
-// Google Sheets Form Submission
-const scriptURL =
-  "https://script.google.com/macros/s/AKfycbxLpiD19BQH7ik_2IvTcV0ED9G-oq2iHGe2iBi9yHdVdl9FKvR3xKjlPrcyG-sc3em0/exec";
-const form = document.forms["submit-to-google-sheet"];
-const msg = document.getElementById("msg");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  fetch(scriptURL, { method: "POST", body: new FormData(form) })
-    .then((response) => {
-      msg.innerHTML = "Submit Successfully";
-      setTimeout(function () {
-        msg.innerHTML = "";
-      }, 1000);
-      form.reset();
-    })
-    .catch((error) => console.error("Error!", error.message));
-});
+function tanFunction() {
+  appendChar('tan(');  // Append "tan(" to input
+}
+
+function cotFunction() {
+  appendChar('cot(');  // Append "cot(" to input
+}
