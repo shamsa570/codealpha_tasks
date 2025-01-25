@@ -1,0 +1,99 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Artist Section */
+.artist-section {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.artist-profile {
+  text-align: center;
+}
+
+.artist-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #007BFF;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+button {
+  display: block;
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px auto;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Artist Info */
+.artist-info h2 {
+  font-size: 24px;
+}
+
+.artist-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.artist-info li {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+/* Album Section */
+.album-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.album {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 20px);
+}
+
+.album img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.album h2 {
+  margin-top: 10px;
+  font-size: 18px;
+}
