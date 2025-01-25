@@ -3,53 +3,250 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scientific Calculator</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Music Platform</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="calculator">
-      <div class="display">
-        <input type="text" id="result" placeholder="0" disabled />
-      </div>
-
-      <div class="buttons">
-        <!-- Clear and Delete -->
-        <button class="btn clear" onclick="clearScreen()">C</button>
-        <button class="btn" onclick="deleteChar()">⌫</button>
-
-        <!-- Parentheses -->
-        <button class="btn" onclick="appendChar('(')">(</button>
-        <button class="btn" onclick="appendChar(')')">)</button>
-
    
-        <button class="btn" onclick="appendChar('7')">7</button>
-        <button class="btn" onclick="appendChar('8')">8</button>
-        <button class="btn" onclick="appendChar('9')">9</button>
-        <button class="btn operator" onclick="appendChar('+')">+</button>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h2>Music Platform</h2>
+        <ul>
+          <li><a href="#popular-songs">Albums</a></li>
+          <li><a href="artist.html">Artists</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+      </aside>
 
-        <button class="btn" onclick="appendChar('4')">4</button>
-        <button class="btn" onclick="appendChar('5')">5</button>
-        <button class="btn" onclick="appendChar('6')">6</button>
-        <button class="btn operator" onclick="appendChar('-')">-</button>
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for music..."
+          />
+          <button id="searchBtn">Search</button>
+        </div>
+        <section class="singers" id="artist-section">
+          <div class="singer-title">
+            <h2 style="color: white">Popular Singers</h2>
+            <button id="showAllBtn">Show All</button>
+          </div>
+          <div class="singer-grid">
+            <div
+              class="singer-card"
+              data-name="Singer 1"
+              data-image="images/a4.jpg"
+              data-songs='["Song 1", "Song 2", "Song 3"]'
+              data-link="singer-profile.html"
+            >
+              <img src="images/a4.jpg" alt="Singer 1" />
+              <h3>Singer 1</h3>
+              <p>Pop Artist</p>
+            </div>
+            <div
+              class="singer-card"
+              data-name="Singer 1"
+              data-image="images/a6.jpg"
+              data-songs='["Song 1", "Song 2", "Song 3"]'
+              data-link="singer-profile.html"
+            >
+              <img src="images/a6.jpg" alt="Singer 1" />
+              <h3>Singer 1</h3>
+              <p>Pop Artist</p>
+            </div>
+            <div
+              class="singer-card"
+              data-name="Singer 2"
+              data-image="images/a5.jpg"
+              data-songs='["Song A", "Song B", "Song C"]'
+              data-link="singer-profile.html"
+            >
+              <img src="images/a5.jpg" alt="Singer 2" />
+              <h3>Singer 2</h3>
+              <p>Rock Artist</p>
+            </div>
+            <div
+              class="singer-card"
+              data-name="Singer 2"
+              data-image="images/af1.jpg"
+              data-songs='["Song A", "Song B", "Song C"]'
+              data-link="singer-profile.html"
+            >
+              <img src="images/f1.jpg" alt="Singer 2" />
+              <h3>Singer 2</h3>
+              <p>Rock Artist</p>
+            </div>
+            <div
+              class="singer-card"
+              data-name="Singer 2"
+              data-image="images/a5.jpg"
+              data-songs='["Song A", "Song B", "Song C"]'
+              data-link="singer-profile.html"
+            >
+              <img src="images/a5.jpg" alt="Singer 2" />
+              <h3>Singer 2</h3>
+              <p>Rock Artist</p>
+            </div>
+            <div
+              class="singer-card"
+              data-name="Singer 2"
+              data-image="images/a5.jpg"
+              data-songs='["Song A", "Song B", "Song C"]'
+              data-link="singer-profile.html"
+            >
+              <img src="images/a4.jpg" alt="Singer 2" />
+              <h3>Singer 2</h3>
+              <p>Rock Artist</p>
+            </div>
+            <div
+              class="singer-card"
+              data-name="Singer 2"
+              data-image="images/a5.jpg"
+              data-songs='["Song A", "Song B", "Song C"]'
+              data-link="singer-profile.html"
+            >
+              <img src="images/a5.jpg" alt="Singer 2" />
+              <h3>Singer 2</h3>
+              <p>Rock Artist</p>
+            </div>
 
-        <button class="btn" onclick="appendChar('1')">1</button>
-        <button class="btn" onclick="appendChar('2')">2</button>
-        <button class="btn" onclick="appendChar('3')">3</button>
-        <button class="btn operator" onclick="appendChar('*')">*</button>
+            <!-- Add more cards as needed with different links -->
+          </div>
+        </section>
 
-        <button class="btn" onclick="appendChar('0')">0</button>
-        <button class="btn" onclick="appendChar('.')">.</button>
-        <button class="btn equal" onclick="calculate()">=</button>
-        <button class="btn operator" onclick="appendChar('/')">/</button>
+        <div class="singer-profile" style="display: none">
+          <img id="singerImage" src="" alt="Singer" />
+          <h2 id="singerName"></h2>
+          <h3>Songs:</h3>
+          <ul id="singerSongs"></ul>
+          <audio id="audioPlayer" controls></audio>
+        </div>
 
-  
-        <button class="btn function" onclick="sinFunction()">sin</button>
-        <button class="btn function" onclick="cosFunction()">cos</button>
-        <button class="btn function" onclick="tanFunction()">tan</button>
-        <button class="btn function" onclick="cotFunction()">cot</button>
+        <section class="popular-songs" id="popular-songs">
+          <h2>Popular Songs</h2>
+          <div class="song-list">
+            <div class="song-item">
+              <div class="image-container">
+                <img src="images/a6.jpg" alt="Song 1" />
+                <div class="info">
+                  <p>Karan Aujla</p>
+                  <br />
+                  <p>Excuses</p>
+                </div>
+                <a
+                  href="javascript:void(0);"
+                  class="play-icon"
+                  data-audio="audio/sadqay.mp3"
+                >
+                  <i class="fa fa-play"></i>
+                </a>
+              </div>
+            </div>
+            <div class="song-item">
+              <div class="image-container">
+                <img src="images/a4.jpg" alt="Song 2" />
+                <div class="info">
+                  <p>AP Dhillon</p>
+                  <br />
+                  <p>Brown Munde</p>
+                </div>
+                <a
+                  href="javascript:void(0);"
+                  class="play-icon"
+                  data-audio="audio/duha.mp3"
+                >
+                  <i class="fa fa-play"></i>
+                </a>
+              </div>
+            </div>
+            <div class="song-item">
+              <div class="image-container">
+                <img src="images/a5.jpg" alt="Song 2" />
+                <div class="info">
+                  <p>AP Dhillon</p>
+                  <br />
+                  <p>Brown Munde</p>
+                </div>
+                <a
+                  href="javascript:void(0);"
+                  class="play-icon"
+                  data-audio="audio/duha.mp3"
+                >
+                  <i class="fa fa-play"></i>
+                </a>
+              </div>
+            </div>
+            <div class="song-item">
+              <div class="image-container">
+                <img src="images/f1.jpg" alt="Song 2" />
+                <div class="info">
+                  <p>AP Dhillon</p>
+                  <br />
+                  <p>Brown Munde</p>
+                </div>
+                <a
+                  href="javascript:void(0);"
+                  class="play-icon"
+                  data-audio="audio/duha.mp3"
+                >
+                  <i class="fa fa-play"></i>
+                </a>
+              </div>
+            </div>
+            <div class="song-item">
+              <div class="image-container">
+                <img src="images/f2.jpg" alt="Song 2" />
+                <div class="info">
+                  <p>AP Dhillon</p>
+                  <br />
+                  <p>Brown Munde</p>
+                </div>
+                <a
+                  href="javascript:void(0);"
+                  class="play-icon"
+                  data-audio="audio/duha.mp3"
+                >
+                  <i class="fa fa-play"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="music-player" id="musicPlayer">
+      <img id="playerImage" src="images/a5.jpg" alt="Singer" />
+      <div class="song-details">
+        <h4 id="songTitle">Title</h4>
+        <p id="artistName">Artist</p>
+      </div>
+      <div class="controls">
+        <button id="prevBtn">⏮</button>
+        <button id="playPauseBtn">▶️</button>
+        <button id="nextBtn">⏭</button>
+      </div>
+      <div class="progress-container">
+        <span id="currentTime">0:00</span>
+        <input type="range" id="progressBar" value="0" max="100" />
+        <span id="duration">0:00</span>
       </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Music Platform</p>
+    </footer>
+
+    <script src="js/index.js"></script>
   </body>
 </html>
